@@ -6,6 +6,10 @@ import AskView from "../views/AskView.vue";
 
 const routes = [
   {
+    path: "/",
+    redirect: "/news",
+  },
+  {
     path: "/news",
     // name: "",
     component: NewsView,
