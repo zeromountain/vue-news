@@ -1,11 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/news">News</router-link> |
-    <router-link to="/ask">Ask</router-link> |
-    <router-link to="/jobs">Jobs</router-link>
-  </nav>
+  <tool-bar />
   <router-view />
 </template>
+
+<script>
+import ToolBar from "./components/ToolBar.vue";
+
+export default {
+  components: {
+    ToolBar,
+  },
+};
+</script>
 
 <style>
 #app {
