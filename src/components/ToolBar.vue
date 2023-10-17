@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <nav>
       <router-link to="/news">News</router-link> |
       <router-link to="/ask">Ask</router-link> |
@@ -12,4 +12,15 @@
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+header {
+  color: #fff;
+  background-color: #f60;
+  display: flex;
+  padding: 8px;
+}
+
+.header .router-link-exact-active {
+  color: #fff;
+}
+</style>
