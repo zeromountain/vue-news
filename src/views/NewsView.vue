@@ -2,7 +2,7 @@
   <div>
     <h1>News</h1>
     <ul>
-      <li v-for="item in news" :key="item.id">
+      <li v-for="item in fetchedNews" :key="item.id">
         <a :href="item.url" target="_blank">{{ item.title }}</a>
       </li>
     </ul>
@@ -10,24 +10,14 @@
 </template>
 
 <script>
-import { fetchNewsList } from "@/api";
-
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      news: [],
-    };
+  computed: {
+    ...mapGetters(["fetchedNews"]),
   },
   created() {
     console.log("NewsView created");
-    fetchNewsList()
-      .then((response) => {
-        console.log(response);
-        this.news = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch("FETCH_NEWS");
   },
   mounted() {
     console.log("NewsView mounted");

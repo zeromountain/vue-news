@@ -2,7 +2,7 @@
   <div>
     <h1>Jobs</h1>
     <ul>
-      <li v-for="item in jobs" :key="item.id">
+      <li v-for="item in fetchedJobs" :key="item.id">
         <a :href="item.url" target="_blank">{{ item.title }}</a>
       </li>
     </ul>
@@ -10,23 +10,14 @@
 </template>
 
 <script>
-import { fetchJobsList } from "@/api";
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      jobs: [],
-    };
+  computed: {
+    ...mapGetters(["fetchedJobs"]),
   },
-  created: function () {
+  created() {
     console.log("JobsView mounted");
-    fetchJobsList()
-      .then((response) => {
-        console.log(response);
-        this.jobs = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch("FETCH_JOBS");
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <h1>Ask</h1>
     <ul>
-      <li v-for="item in ask" :key="item.id">
+      <li v-for="item in fetchedAsk" :key="item.id">
         <a :href="item.url" target="_blank">{{ item.title }}</a>
       </li>
     </ul>
@@ -10,23 +10,17 @@
 </template>
 
 <script>
-import { fetchAskList } from "@/api";
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      ask: [],
-    };
+  computed: {
+    ...mapGetters(["fetchedAsk"]),
+    // ...mapState({
+    //   ask: (state) => state.ask,
+    // }),
   },
   created() {
     console.log("AskView created");
-    fetchAskList()
-      .then((response) => {
-        console.log(response);
-        this.ask = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch("FETCH_ASK");
   },
 };
 </script>
