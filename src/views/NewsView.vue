@@ -4,6 +4,7 @@
     <ul>
       <li v-for="item in fetchedNews" :key="item.id">
         <a :href="item.url" target="_blank">{{ item.title }}</a>
+        <small>{{ item.user }} {{ item.time_ago }} </small>
       </li>
     </ul>
   </div>

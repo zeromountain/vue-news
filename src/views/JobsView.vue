@@ -2,8 +2,9 @@
   <div>
     <h1>Jobs</h1>
     <ul>
-      <li v-for="item in fetchedJobs" :key="item.id">
-        <a :href="item.url" target="_blank">{{ item.title }}</a>
+      <li v-for="job in fetchedJobs" :key="job.id">
+        <a :href="job.url" target="_blank">{{ job.title }}</a>
+        <small>{{ job.domain }} {{ job.time_ago }} </small>
       </li>
     </ul>
   </div>

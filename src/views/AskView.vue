@@ -2,8 +2,9 @@
   <div>
     <h1>Ask</h1>
     <ul>
-      <li v-for="item in fetchedAsk" :key="item.id">
-        <a :href="item.url" target="_blank">{{ item.title }}</a>
+      <li v-for="ask in fetchedAsk" :key="ask.id">
+        <a :href="ask.url" target="_blank">{{ ask.title }}</a>
+        <small>{{ ask.user }} {{ ask.time_ago }} </small>
       </li>
     </ul>
   </div>
